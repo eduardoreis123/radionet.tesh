@@ -1,0 +1,989 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RadioNetway.Tech — Rádio Online</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════
+     VIEW PÚBLICA
+     ═══════════════════════════════════════════ -->
+<div id="publicView">
+
+    <!-- ── HEADER ── -->
+    <header class="header" id="header">
+        <div class="header-inner">
+            <a href="#home" class="logo">
+                <span class="logo-icon">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="2"/>
+                        <path d="M16.24 7.76a6 6 0 010 8.49m-8.48-.01a6 6 0 010-8.49m11.31-2.82a10 10 0 010 14.14m-14.14 0a10 10 0 010-14.14"/>
+                    </svg>
+                </span>
+                <span class="logo-text" data-site="companyName">RadioNetway.Tech</span>
+            </a>
+
+            <nav class="nav" id="navMenu">
+                <a href="#home"     class="nav-link">Início</a>
+                <a href="#radio"    class="nav-link">Rádio ao Vivo</a>
+                <a href="#planos"   class="nav-link">Planos</a>
+                <a href="#contato"  class="nav-link">Contato</a>
+            </nav>
+
+            <div class="header-actions">
+                <a href="https://wa.me/5500000000000" data-site="whatsapp" class="btn-whatsapp" target="_blank" rel="noopener">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.555 4.118 1.528 5.845L.057 23.945l6.284-1.648A11.94 11.94 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.885 0-3.651-.502-5.178-1.38l-.371-.22-3.853 1.011 1.027-3.748-.242-.386A9.946 9.946 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+                    <span>WhatsApp</span>
+                </a>
+                <button class="btn-ouvirheader" onclick="pubTogglePlay()">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                    OUVIR AGORA
+                </button>
+                <button class="menu-toggle" id="menuToggle" onclick="document.getElementById('navMenu').classList.toggle('open')" aria-label="Menu">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- ── HERO ── -->
+    <section class="hero" id="home">
+        <div class="hero-bg">
+            <div class="hero-grid"></div>
+            <div class="hero-orb hero-orb--1"></div>
+            <div class="hero-orb hero-orb--2"></div>
+        </div>
+        <div class="hero-inner">
+            <div class="hero-badge">
+                <span class="status-dot" id="statusDot"></span>
+                <span class="status-text" id="statusText">Offline</span>
+            </div>
+            <h1 class="hero-title" data-cms="hero-title">
+                A RÁDIO IDEAL PARA O SEU DIA
+            </h1>
+            <p class="hero-subtitle">Música ao vivo 24h com qualidade e estabilidade. <span data-site="companyName">RadioNetway.Tech</span> — <span data-site="slogan">Conectando você ao mundo!</span></p>
+            <div class="hero-actions">
+                <button class="btn-hero-play" onclick="pubTogglePlay()">
+                    <svg id="pubPlayIcon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M8 5v14l11-7z"/>
+                    </svg>
+                    <span data-cms="hero-btn-text">Ouvir Agora</span>
+                </button>
+                <a href="#servicos" class="btn-hero-outline" data-cms="hero-btn-sec"><span data-cms="hero-btn-sec-text">Nossos Serviços</span></a>
+            </div>
+            <div class="hero-stats">
+                <div class="hero-stat">
+                    <span class="hero-stat-num" id="listenerCount" data-cms="stat1-num">--</span>
+                    <span class="hero-stat-label" data-cms="stat1-label">Ouvintes</span>
+                </div>
+                <div class="hero-stat-divider"></div>
+                <div class="hero-stat">
+                    <span class="hero-stat-num" data-cms="stat2-num">24/7</span>
+                    <span class="hero-stat-label" data-cms="stat2-label">No Ar</span>
+                </div>
+                <div class="hero-stat-divider"></div>
+                <div class="hero-stat">
+                    <span class="hero-stat-num" data-cms="stat3-num">100%</span>
+                    <span class="hero-stat-label" data-cms="stat3-label">Digital</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mini player no hero -->
+        <div class="hero-player">
+            <div class="hero-player-vinyl">
+                <div class="vinyl" id="vinyl">
+                    <img id="pubThumb" class="vinyl-thumb hidden" src="" alt="">
+                    <div id="pubThumbFallback" class="vinyl-fallback">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg>
+                    </div>
+                </div>
+                <div class="soundwave" id="soundwave">
+                    <span></span><span></span><span></span><span></span><span></span>
+                </div>
+            </div>
+            <div class="hero-player-info">
+                <div class="hero-player-track">
+                    <div class="hero-player-title" id="pubTitle">Nenhuma música</div>
+                    <div class="hero-player-channel" id="pubChannel">RadioNetway.Tech</div>
+                </div>
+                <div class="hero-player-progress">
+                    <span class="hero-player-time" id="pubTimeElapsed">0:00</span>
+                    <div class="pub-progress-bar">
+                        <div class="pub-progress-fill" id="pubProgressFill"></div>
+                    </div>
+                    <span class="hero-player-time" id="pubTimeDuration">--:--</span>
+                </div>
+                <div class="hero-player-controls">
+                    <button class="pub-vol-btn" onclick="toggleMute()" title="Mudo">
+                        <svg id="pubMuteIcon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/>
+                        </svg>
+                    </button>
+                    <input type="range" class="pub-vol-slider" id="pubVolumeSlider" min="0" max="100" value="80"
+                        oninput="setVolume(this.value); syncVolSlider(this.value)">
+                    <button class="pub-play-btn" onclick="pubTogglePlay()">
+                        <svg id="pubPlayIcon2" width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M8 5v14l11-7z"/>
+                        </svg>
+                    </button>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── CAROUSEL DE BANNERS ── -->
+    <section class="bnr-section" id="anuncios">
+        <div class="container">
+            <div class="bnr-label">Ofertas &amp; Promoções</div>
+        </div>
+        <div class="bnr-root" id="bnrRoot">
+            <!-- Viewport: uma janela que mostra um slide por vez -->
+            <div class="bnr-viewport" id="bnrViewport">
+                <div class="bnr-track" id="bnrTrack">
+                    <!-- Slides injetados pelo public.js -->
+                </div>
+            </div>
+
+            <!-- Botões de navegação -->
+            <button class="bnr-btn bnr-btn--prev" id="bnrPrev" onclick="carouselPrev()" aria-label="Anterior">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+            </button>
+            <button class="bnr-btn bnr-btn--next" id="bnrNext" onclick="carouselNext()" aria-label="Próximo">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+            </button>
+        </div>
+
+        <!-- Dots de navegação -->
+        <div class="bnr-dots" id="bnrDots"></div>
+    </section>
+
+    <!-- ── PLANOS RESIDENCIAIS ── -->
+    <section class="planos-section" id="planos">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-label">Planos Residenciais</div>
+                <h2 class="section-title" data-cms="planos-title">Escolha o Plano <span class="text-purple">Ideal</span></h2>
+                <p class="section-desc" data-cms="planos-subtitle">Internet fibra óptica com a velocidade que você precisa</p>
+            </div>
+            <!-- Planos dinâmicos do CMS -->
+            <div class="planos-grid" id="planosContainer">
+                <div class="plano-card">
+                    <div class="plano-mega">450</div>
+                    <div class="plano-mega-label">MEGA</div>
+                    <div class="plano-price">R$ 89,90</div>
+                    <div class="plano-price-period">/mês no boleto</div>
+                    <div class="plano-features">
+                        <div class="plano-feature"><span class="plano-feature-dot">✓</span> Instalação Grátis</div>
+                        <div class="plano-feature"><span class="plano-feature-dot">✓</span> Roteador Incluso</div>
+                        <div class="plano-feature"><span class="plano-feature-dot">✓</span> Suporte 24h</div>
+                        <div class="plano-feature"><span class="plano-feature-dot">✓</span> Sem Fidelidade</div>
+                    </div>
+                    <a href="https://wa.me/5500000000000" data-site="whatsapp" class="plano-cta" target="_blank">ASSINE JÁ</a>
+                </div>
+                <div class="plano-card plano-card--popular">
+                    <div class="plano-popular-badge">⭐ Mais Popular</div>
+                    <div class="plano-mega">550</div>
+                    <div class="plano-mega-label">MEGA</div>
+                    <div class="plano-price">R$ 109,90</div>
+                    <div class="plano-price-period">/mês no boleto</div>
+                    <div class="plano-features">
+                        <div class="plano-feature"><span class="plano-feature-dot">✓</span> Instalação Grátis</div>
+                        <div class="plano-feature"><span class="plano-feature-dot">✓</span> Roteador Dual Band</div>
+                        <div class="plano-feature"><span class="plano-feature-dot">✓</span> Suporte Prioritário 24h</div>
+                        <div class="plano-feature"><span class="plano-feature-dot">✓</span> IP Fixo Incluso</div>
+                    </div>
+                    <a href="https://wa.me/5500000000000" data-site="whatsapp" class="plano-cta" target="_blank">ASSINE JÁ</a>
+                </div>
+                <div class="plano-card">
+                    <div class="plano-mega">1000</div>
+                    <div class="plano-mega-label">MEGA</div>
+                    <div class="plano-price">R$ 159,90</div>
+                    <div class="plano-price-period">/mês no boleto</div>
+                    <div class="plano-features">
+                        <div class="plano-feature"><span class="plano-feature-dot">✓</span> Instalação Grátis</div>
+                        <div class="plano-feature"><span class="plano-feature-dot">✓</span> Roteador Wi-Fi 6</div>
+                        <div class="plano-feature"><span class="plano-feature-dot">✓</span> Suporte VIP 24h</div>
+                        <div class="plano-feature"><span class="plano-feature-dot">✓</span> SLA Garantido</div>
+                    </div>
+                    <a href="https://wa.me/5500000000000" data-site="whatsapp" class="plano-cta" target="_blank">ASSINE JÁ</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+    <!-- ── RÁDIO AO VIVO ── -->
+    <section class="radio-section" id="radio">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-label">Rádio Online</div>
+                <h2 class="section-title">Ouça ao <span class="text-purple">Vivo</span></h2>
+                <p class="section-desc">Música ao vivo 24 horas por dia, 7 dias por semana</p>
+            </div>
+
+            <!-- Player centralizado — apenas leitura para o ouvinte -->
+            <div class="radio-listener-wrap">
+                <div class="player-card">
+                    <div class="player-card-header">
+                        <div class="player-status">
+                            <span class="status-pill" id="statusPill">
+                                <span class="status-dot" id="statusDot2"></span>
+                                <span id="statusText2">Offline</span>
+                            </span>
+                            <span id="liveBadge" class="live-badge">AO VIVO</span>
+                        </div>
+                    </div>
+
+                    <!-- YT Player (hidden — áudio apenas) -->
+                    <div class="yt-player-wrap">
+                        <div id="ytPlayer"></div>
+                        <!-- Ad overlay -->
+                        <div id="adOverlay" class="ad-overlay hidden">
+                            <div class="ad-overlay-inner">
+                                <div class="ad-overlay-icon">
+                                    <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm-9 8H9v4H7V8h2v2h2V8h2v8h-2v-4zm7 4h-2v-4.5l-1 1-1.4-1.4 2.4-2.4c.4-.4 1-.4 1.4 0 .2.2.3.4.3.7V16h.3z"/></svg>
+                                </div>
+                                <div class="ad-overlay-text">Publicidade</div>
+                                <div class="ad-countdown-wrap">
+                                    Pula em <span id="adCountdown">30</span>s
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Now playing -->
+                    <div class="now-playing">
+                        <div class="np-info">
+                            <div class="np-title" id="npTitle">Nenhuma música tocando</div>
+                            <div class="np-channel" id="npChannel">RadioNetway.Tech</div>
+                        </div>
+                        <div id="radioMessage" class="radio-on-badge hidden">● AO VIVO</div>
+                    </div>
+
+                    <!-- Barra de progresso (somente leitura) -->
+                    <div class="progress-section">
+                        <span class="time-text" id="timeElapsed">0:00</span>
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="progressFill"></div>
+                            <div class="progress-thumb" id="progressThumb"></div>
+                        </div>
+                        <span class="time-text" id="timeDuration">--:--</span>
+                    </div>
+
+                    <!-- Controles: apenas volume + play/pause -->
+                    <div class="player-controls">
+                        <button class="ctrl-btn ctrl-btn--mute" onclick="toggleMute()" title="Mudo">
+                            <svg id="muteIcon" width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/>
+                            </svg>
+                        </button>
+                        <input type="range" id="volumeSlider" min="0" max="100" value="80" class="volume-slider"
+                            oninput="setVolume(this.value)">
+                        <button class="ctrl-btn ctrl-btn--main" id="toggleBtn" onclick="toggleRadio()" title="Play/Pause">
+                            <svg id="btnIcon" width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M8 5v14l11-7z"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── SOBRE ── -->
+    <section class="sobre-section" id="sobre">
+        <div class="container">
+            <div class="sobre-grid">
+                <div class="sobre-content">
+                    <div class="section-label">Sobre Nós</div>
+                    <h2 class="section-title">Tecnologia que <span class="text-purple">conecta</span> pessoas</h2>
+                    <p class="sobre-text">A <strong>RadioNetway.Tech</strong> é uma empresa especializada em soluções de internet, informática e tecnologia. Nossa missão é levar conectividade de alta qualidade para residências e empresas, com atendimento humanizado e suporte técnico especializado.</p>
+                    <p class="sobre-text">Atuamos no mercado com serviços de internet fibra óptica, manutenção de computadores, infraestrutura de redes e suporte corporativo completo. Junto com nossa rádio online, criamos uma experiência única que une tecnologia e entretenimento.</p>
+                    <div class="sobre-stats">
+                        <div class="sobre-stat">
+                            <div class="sobre-stat-num">500+</div>
+                            <div class="sobre-stat-label">Clientes</div>
+                        </div>
+                        <div class="sobre-stat">
+                            <div class="sobre-stat-num">5+</div>
+                            <div class="sobre-stat-label">Anos</div>
+                        </div>
+                        <div class="sobre-stat">
+                            <div class="sobre-stat-num">99%</div>
+                            <div class="sobre-stat-label">Satisfação</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="sobre-visual">
+                    <div class="sobre-card-grid">
+                        <div class="sobre-mini-card">
+                            <div class="mini-card-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><circle cx="12" cy="20" r="1"/></svg>
+                            </div>
+                            <div class="mini-card-title">Internet Fibra</div>
+                        </div>
+                        <div class="sobre-mini-card">
+                            <div class="mini-card-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                            </div>
+                            <div class="mini-card-title">Informática</div>
+                        </div>
+                        <div class="sobre-mini-card">
+                            <div class="mini-card-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+                            </div>
+                            <div class="mini-card-title">Redes</div>
+                        </div>
+                        <div class="sobre-mini-card">
+                            <div class="mini-card-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="2"/><path d="M16.24 7.76a6 6 0 010 8.49m-8.48-.01a6 6 0 010-8.49"/></svg>
+                            </div>
+                            <div class="mini-card-title">Rádio Online</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── SERVIÇOS ── -->
+    <section class="servicos-section" id="servicos">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-label">O que fazemos</div>
+                <h2 class="section-title">Nossos <span class="text-purple">Serviços</span></h2>
+                <p class="section-desc">Soluções completas em tecnologia para você e sua empresa</p>
+            </div>
+            <div class="servicos-grid">
+                <div class="servico-card">
+                    <div class="servico-icon">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+                            <path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><circle cx="12" cy="20" r="1"/>
+                        </svg>
+                    </div>
+                    <h3 class="servico-title">Internet Fibra</h3>
+                    <p class="servico-desc">Conexão de alta velocidade com fibra óptica para residências e empresas. Instalação rápida e suporte 24h.</p>
+                    <div class="servico-features">
+                        <span>Alta velocidade</span>
+                        <span>Sem oscilações</span>
+                        <span>Suporte 24h</span>
+                    </div>
+                </div>
+                <div class="servico-card">
+                    <div class="servico-icon">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+                            <rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/>
+                        </svg>
+                    </div>
+                    <h3 class="servico-title">Computadores</h3>
+                    <p class="servico-desc">Venda, montagem e configuração de computadores desktop e notebooks para todos os perfis de uso.</p>
+                    <div class="servico-features">
+                        <span>Montagem</span>
+                        <span>Configuração</span>
+                        <span>Garantia</span>
+                    </div>
+                </div>
+                <div class="servico-card">
+                    <div class="servico-icon">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+                            <path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/>
+                        </svg>
+                    </div>
+                    <h3 class="servico-title">Manutenção</h3>
+                    <p class="servico-desc">Assistência técnica especializada para computadores, notebooks e periféricos. Diagnóstico rápido e eficiente.</p>
+                    <div class="servico-features">
+                        <span>Diagnóstico</span>
+                        <span>Formatação</span>
+                        <span>Upgrades</span>
+                    </div>
+                </div>
+                <div class="servico-card">
+                    <div class="servico-icon">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+                            <rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/>
+                        </svg>
+                    </div>
+                    <h3 class="servico-title">Redes</h3>
+                    <p class="servico-desc">Instalação e configuração de redes corporativas e domésticas. Wi-Fi, cabeamento estruturado e segurança.</p>
+                    <div class="servico-features">
+                        <span>Wi-Fi</span>
+                        <span>Cabeamento</span>
+                        <span>Segurança</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── PRODUTOS ── -->
+    <section class="produtos-section" id="produtos">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-label">Ofertas Especiais</div>
+                <h2 class="section-title">Nossos <span class="text-purple">Produtos</span></h2>
+                <p class="section-desc">Planos e produtos com os melhores preços</p>
+            </div>
+            <div class="produtos-grid">
+                <div class="produto-card produto-card--destaque">
+                    <div class="produto-badge">Mais Popular</div>
+                    <div class="produto-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+                            <path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><circle cx="12" cy="20" r="1"/>
+                        </svg>
+                    </div>
+                    <h3 class="produto-title">Internet 100MB</h3>
+                    <div class="produto-preco">
+                        <span class="preco-valor">R$ 79,90</span>
+                        <span class="preco-periodo">/mês</span>
+                    </div>
+                    <ul class="produto-lista">
+                        <li>100 Mbps Fibra Óptica</li>
+                        <li>Instalação Grátis</li>
+                        <li>Roteador Incluso</li>
+                        <li>Suporte 24h</li>
+                    </ul>
+                    <a href="https://wa.me/5500000000000" data-site="whatsapp" class="produto-cta" target="_blank" rel="noopener">Contratar</a>
+                </div>
+                <div class="produto-card">
+                    <div class="produto-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+                            <path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><circle cx="12" cy="20" r="1"/>
+                        </svg>
+                    </div>
+                    <h3 class="produto-title">Internet 200MB</h3>
+                    <div class="produto-preco">
+                        <span class="preco-valor">R$ 109,90</span>
+                        <span class="preco-periodo">/mês</span>
+                    </div>
+                    <ul class="produto-lista">
+                        <li>200 Mbps Fibra Óptica</li>
+                        <li>Instalação Grátis</li>
+                        <li>Roteador Dual Band</li>
+                        <li>Suporte Prioritário</li>
+                    </ul>
+                    <a href="https://wa.me/5500000000000" data-site="whatsapp" class="produto-cta" target="_blank" rel="noopener">Contratar</a>
+                </div>
+                <div class="produto-card">
+                    <div class="produto-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+                            <rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/>
+                        </svg>
+                    </div>
+                    <h3 class="produto-title">PC Gamer Entry</h3>
+                    <div class="produto-preco">
+                        <span class="preco-valor">R$ 2.499</span>
+                        <span class="preco-periodo"> à vista</span>
+                    </div>
+                    <ul class="produto-lista">
+                        <li>Processador Ryzen 5</li>
+                        <li>16GB RAM DDR4</li>
+                        <li>SSD 480GB</li>
+                        <li>Placa de Vídeo GTX 1650</li>
+                    </ul>
+                    <a href="https://wa.me/5500000000000" data-site="whatsapp" class="produto-cta" target="_blank" rel="noopener">Consultar</a>
+                </div>
+                <div class="produto-card">
+                    <div class="produto-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+                            <path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/>
+                        </svg>
+                    </div>
+                    <h3 class="produto-title">Plano Manutenção</h3>
+                    <div class="produto-preco">
+                        <span class="preco-valor">R$ 89,90</span>
+                        <span class="preco-periodo">/mês</span>
+                    </div>
+                    <ul class="produto-lista">
+                        <li>2 Visitas Mensais</li>
+                        <li>Suporte Remoto</li>
+                        <li>Backup de Dados</li>
+                        <li>Prioridade no Atendimento</li>
+                    </ul>
+                    <a href="https://wa.me/5500000000000" data-site="whatsapp" class="produto-cta" target="_blank" rel="noopener">Assinar</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── CONTATO ── -->
+    <section class="contato-section" id="contato">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-label">Fale Conosco</div>
+                <h2 class="section-title">Entre em <span class="text-purple">Contato</span></h2>
+                <p class="section-desc">Estamos prontos para atender você</p>
+            </div>
+            <div class="contato-grid">
+                <a href="https://wa.me/5500000000000" data-site="whatsapp" class="contato-card contato-card--whatsapp" target="_blank" rel="noopener">
+                    <div class="contato-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.555 4.118 1.528 5.845L.057 23.945l6.284-1.648A11.94 11.94 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.885 0-3.651-.502-5.178-1.38l-.371-.22-3.853 1.011 1.027-3.748-.242-.386A9.946 9.946 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+                    </div>
+                    <h3 class="contato-name">WhatsApp</h3>
+                    <p class="contato-desc">Atendimento rápido pelo WhatsApp</p>
+                    <span class="contato-btn">Enviar mensagem</span>
+                </a>
+                <a href="https://instagram.com/" class="contato-card contato-card--instagram" target="_blank" rel="noopener">
+                    <div class="contato-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                    </div>
+                    <h3 class="contato-name">Instagram</h3>
+                    <p class="contato-desc">Siga-nos e fique por dentro das novidades</p>
+                    <span class="contato-btn">Seguir</span>
+                </a>
+                <a href="https://facebook.com/" class="contato-card contato-card--facebook" target="_blank" rel="noopener">
+                    <div class="contato-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                    </div>
+                    <h3 class="contato-name">Facebook</h3>
+                    <p class="contato-desc">Curta nossa página e interaja conosco</p>
+                    <span class="contato-btn">Curtir página</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── PLANOS CORPORATIVOS ── -->
+    <section class="planos-section" id="corporativo" style="background: white;">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-label">Planos Corporativos</div>
+                <h2 class="section-title">Soluções para <span class="text-purple">Empresas</span></h2>
+                <p class="section-desc">Internet dedicada com SLA garantido e suporte especializado para o seu negócio</p>
+            </div>
+            <div class="planos-grid">
+                <div class="plano-card">
+                    <div class="plano-mega">250</div>
+                    <div class="plano-mega-label">MEGA</div>
+                    <div class="plano-speeds">
+                        <div class="plano-speed-item">
+                            <span class="plano-speed-val">250 Mbps</span>
+                            <span class="plano-speed-label">Download</span>
+                        </div>
+                        <div class="plano-speed-item">
+                            <span class="plano-speed-val">125 Mbps</span>
+                            <span class="plano-speed-label">Upload</span>
+                        </div>
+                    </div>
+                    <div class="plano-price">R$ 199,90</div>
+                    <div class="plano-price-period">/mês · Empresarial</div>
+                    <div class="plano-features">
+                        <div class="plano-feature"><span class="plano-feature-dot">✓</span> IP Fixo Incluso</div>
+                        <div class="plano-feature"><span class="plano-feature-dot">✓</span> SLA 99,5% Garantido</div>
+                        <div class="plano-feature"><span class="plano-feature-dot">✓</span> Suporte Técnico 24h</div>
+                        <div class="plano-feature"><span class="plano-feature-dot">✓</span> Firewall Incluso</div>
+                    </div>
+                    <a href="https://wa.me/5500000000000" data-site="whatsapp" class="plano-cta" target="_blank">CONTRATAR</a>
+                </div>
+                <div class="plano-card plano-card--popular">
+                    <div class="plano-popular-badge">💼 Recomendado</div>
+                    <div class="plano-mega">350</div>
+                    <div class="plano-mega-label">MEGA</div>
+                    <div class="plano-speeds">
+                        <div class="plano-speed-item">
+                            <span class="plano-speed-val">350 Mbps</span>
+                            <span class="plano-speed-label">Download</span>
+                        </div>
+                        <div class="plano-speed-item">
+                            <span class="plano-speed-val">175 Mbps</span>
+                            <span class="plano-speed-label">Upload</span>
+                        </div>
+                    </div>
+                    <div class="plano-price">R$ 299,90</div>
+                    <div class="plano-price-period">/mês · Empresarial</div>
+                    <div class="plano-features">
+                        <div class="plano-feature"><span class="plano-feature-dot">✓</span> IP Fixo Incluso</div>
+                        <div class="plano-feature"><span class="plano-feature-dot">✓</span> SLA 99,9% Garantido</div>
+                        <div class="plano-feature"><span class="plano-feature-dot">✓</span> Suporte VIP 24h</div>
+                        <div class="plano-feature"><span class="plano-feature-dot">✓</span> Firewall + VPN</div>
+                        <div class="plano-feature"><span class="plano-feature-dot">✓</span> Gerenciamento de Rede</div>
+                    </div>
+                    <a href="https://wa.me/5500000000000" data-site="whatsapp" class="plano-cta" target="_blank">CONTRATAR</a>
+                </div>
+                <div class="plano-card">
+                    <div class="plano-mega">550</div>
+                    <div class="plano-mega-label">MEGA</div>
+                    <div class="plano-speeds">
+                        <div class="plano-speed-item">
+                            <span class="plano-speed-val">550 Mbps</span>
+                            <span class="plano-speed-label">Download</span>
+                        </div>
+                        <div class="plano-speed-item">
+                            <span class="plano-speed-val">275 Mbps</span>
+                            <span class="plano-speed-label">Upload</span>
+                        </div>
+                    </div>
+                    <div class="plano-price">R$ 449,90</div>
+                    <div class="plano-price-period">/mês · Empresarial</div>
+                    <div class="plano-features">
+                        <div class="plano-feature"><span class="plano-feature-dot">✓</span> IP Fixo Dedicado</div>
+                        <div class="plano-feature"><span class="plano-feature-dot">✓</span> SLA 99,99% Garantido</div>
+                        <div class="plano-feature"><span class="plano-feature-dot">✓</span> Suporte On-Site 24h</div>
+                        <div class="plano-feature"><span class="plano-feature-dot">✓</span> Firewall + VPN + VLAN</div>
+                        <div class="plano-feature"><span class="plano-feature-dot">✓</span> NOC Dedicado</div>
+                    </div>
+                    <a href="https://wa.me/5500000000000" data-site="whatsapp" class="plano-cta" target="_blank">CONTRATAR</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── RODAPÉ ── -->
+    <footer class="footer">
+        <div class="footer-inner">
+            <div class="footer-brand">
+                <span class="logo-text" data-site="companyName">RadioNetway.Tech</span>
+                <p class="footer-slogan" data-site="slogan">Conectando você ao mundo!</p>
+            </div>
+            <div class="footer-links">
+                <a href="#home">Início</a>
+                <a href="#radio">Rádio ao Vivo</a>
+                <a href="#planos">Planos</a>
+                <a href="#beneficios">Benefícios</a>
+                <a href="#contato">Contato</a>
+            </div>
+            <div class="footer-copy">
+                <span data-cms="footer">&copy; 2025 RadioNetway.Tech. Todos os direitos reservados.</span>
+                <br><small data-cms="copyright">Desenvolvido com ❤️ pela equipe Netway</small>
+                <br><small>Pressione <kbd>Alt+Z</kbd> para acessar o Painel Admin | <a href="admin.html" style="color:var(--purple-l)">Admin CMS</a></small>
+            </div>
+        </div>
+    </footer>
+
+</div><!-- /publicView -->
+
+<!-- WhatsApp Flutuante -->
+<a href="https://wa.me/5500000000000" data-site="whatsapp" class="whatsapp-float" target="_blank" rel="noopener" aria-label="Conversar no WhatsApp">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.555 4.118 1.528 5.845L.057 23.945l6.284-1.648A11.94 11.94 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.885 0-3.651-.502-5.178-1.38l-.371-.22-3.853 1.011 1.027-3.748-.242-.386A9.946 9.946 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+    <span>Conversar no WhatsApp</span>
+</a>
+
+
+<!-- ═══════════════════════════════════════════
+     VIEW ADMIN (Ctrl+M ou toggleAdminView)
+     ═══════════════════════════════════════════ -->
+<div id="adminView" class="hidden">
+    <div class="admin-view-bar">
+        <span>Modo Admin (Ctrl+M para sair)</span>
+        <button onclick="hideAdmin()" class="admin-view-close">✕ Fechar</button>
+    </div>
+    <!-- conteúdo pode ser expandido aqui se necessário -->
+</div>
+
+
+<!-- ═══════════════════════════════════════════
+     PAINEL ADMIN FLUTUANTE (Alt+Z)
+     ═══════════════════════════════════════════ -->
+<div id="adminPanel" class="admin-panel admin-panel--hidden">
+    <div class="admin-panel-header">
+        <div class="admin-panel-title">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19.14,12.94c0.04-0.3,0.06-0.61,0.06-0.94c0-0.32-0.02-0.64-0.07-0.94l2.03-1.58c0.18-0.14,0.23-0.41,0.12-0.61 l-1.92-3.32c-0.12-0.22-0.37-0.29-0.59-0.22l-2.39,0.96c-0.5-0.38-1.03-0.7-1.62-0.94L14.4,2.81c-0.04-0.24-0.24-0.41-0.48-0.41 h-3.84c-0.24,0-0.43,0.17-0.47,0.41L9.25,5.35C8.66,5.59,8.12,5.92,7.63,6.29L5.24,5.33c-0.22-0.08-0.47,0-0.59,0.22L2.74,8.87 C2.62,9.08,2.66,9.34,2.86,9.48l2.03,1.58C4.84,11.36,4.8,11.69,4.8,12s0.02,0.64,0.07,0.94l-2.03,1.58 c-0.18,0.14-0.23,0.41-0.12,0.61l1.92,3.32c0.12,0.22,0.37,0.29,0.59,0.22l2.39-0.96c0.5,0.38,1.03,0.7,1.62,0.94l0.36,2.54 c0.05,0.24,0.24,0.41,0.48,0.41h3.84c0.24,0,0.44-0.17,0.47-0.41l0.36-2.54c0.59-0.24,1.13-0.56,1.62-0.94l2.39,0.96 c0.22,0.08,0.47,0,0.59-0.22l1.92-3.32c0.12-0.22,0.07-0.47-0.12-0.61L19.14,12.94z M12,15.6c-1.98,0-3.6-1.62-3.6-3.6 s1.62-3.6,3.6-3.6s3.6,1.62,3.6,3.6S13.98,15.6,12,15.6z"/></svg>
+            Painel Admin
+        </div>
+        <button class="admin-panel-close" onclick="closeAdminPanel()">✕</button>
+    </div>
+
+    <!-- Tabs -->
+    <div class="admin-tabs">
+        <button class="admin-tab-btn active" data-tab="textos" onclick="showAdminTab('textos')">Textos</button>
+        <button class="admin-tab-btn" data-tab="banners" onclick="showAdminTab('banners')">Banners</button>
+        <button class="admin-tab-btn" data-tab="radio-admin" onclick="showAdminTab('radio-admin')">Rádio</button>
+        <button class="admin-tab-btn" data-tab="audio-ads" onclick="showAdminTab('audio-ads')">Áudio Ads</button>
+        <button class="admin-tab-btn" data-tab="hist-control" onclick="showAdminTab('hist-control')" id="histTabBtn">🕐 Histórico</button>
+    </div>
+
+    <!-- Tab: Textos -->
+    <div class="admin-tab-content" data-tab="textos">
+        <div class="admin-field">
+            <label class="admin-label">Nome da Empresa</label>
+            <input type="text" id="adminCompanyName" class="admin-input" placeholder="RadioNetway.Tech">
+        </div>
+        <div class="admin-field">
+            <label class="admin-label">Slogan</label>
+            <input type="text" id="adminSlogan" class="admin-input" placeholder="Conectando você ao mundo!">
+        </div>
+        <div class="admin-field">
+            <label class="admin-label">WhatsApp (somente números)</label>
+            <input type="text" id="adminWhatsapp" class="admin-input" placeholder="5511999999999">
+        </div>
+        <button class="admin-save-btn" onclick="saveTexts()">💾 Salvar Textos</button>
+    </div>
+
+    <!-- Tab: Banners -->
+    <div class="admin-tab-content hidden" data-tab="banners">
+        <button class="admin-save-btn admin-save-btn--secondary" onclick="addBanner()">+ Novo Banner</button>
+        <div id="adminBannerList" class="admin-banner-list"></div>
+    </div>
+
+    <!-- Tab: Rádio Admin -->
+    <div class="admin-tab-content hidden" data-tab="radio-admin">
+        <div class="admin-radio-status">
+            <div class="admin-status-row">
+                <span class="status-dot" id="statusDot"></span>
+                <span id="statusText">Offline</span>
+                <span class="status-pill" id="statusPill2">
+                    <span class="status-dot"></span>
+                    <span>Status</span>
+                </span>
+            </div>
+            <div id="radioMessage2" class="hidden" style="display:none"></div>
+        </div>
+
+        <div class="admin-counters">
+            <div class="admin-counter-item">
+                <span class="admin-counter-num" id="songCounter2">0</span>
+                <span class="admin-counter-label">Tocadas</span>
+            </div>
+            <div class="admin-counter-item">
+                <span class="admin-counter-num" id="adIn2">3</span>
+                <span class="admin-counter-label">Próx. Anúncio</span>
+            </div>
+        </div>
+
+        <div class="admin-player-controls">
+            <button class="admin-ctrl-btn" onclick="toggleRadio()">
+                <svg id="btnIcon2" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                Play/Pause
+            </button>
+            <button class="admin-ctrl-btn" onclick="playNext()">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z"/></svg>
+                Próxima
+            </button>
+        </div>
+
+        <div class="admin-np">
+            <div class="admin-np-title" id="npTitle2">—</div>
+            <div class="admin-np-channel" id="npChannel2">RadioNetway.Tech</div>
+        </div>
+
+        <div class="admin-progress-row">
+            <span id="timeElapsed2" style="display:none">0:00</span>
+            <div class="admin-prog-bar">
+                <div id="progressFill2" style="display:none"></div>
+                <div id="progressThumb2" style="display:none"></div>
+            </div>
+            <span id="timeDuration2" style="display:none">--:--</span>
+        </div>
+
+        <div class="admin-vol-row">
+            <svg id="muteIcon2" style="display:none" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>
+            <label class="admin-label">Volume</label>
+            <input type="range" id="volumeSlider2" style="display:none" min="0" max="100" value="80">
+        </div>
+
+        <!-- Queue admin -->
+        <div class="admin-queue-section">
+            <div class="admin-queue-header">
+                Fila <span id="queueCount2" style="display:none">0</span>
+                <button class="btn-sm btn-sm--danger" style="float:right" onclick="clearQueue()">Limpar</button>
+            </div>
+            <div id="queueEmpty2" class="hidden" style="display:none">Fila vazia</div>
+            <div id="queueList2" class="hidden" style="display:none"></div>
+        </div>
+    </div>
+
+    <!-- Tab: Áudio Ads -->
+    <div class="admin-tab-content hidden" data-tab="audio-ads">
+        <!-- Dev Panel (usado pelo script.js) -->
+        <div id="devPanel" class="dev-panel">
+            <div class="dev-panel-header" onclick="toggleDevPanel()">
+                <span>Sistema de Anúncios de Áudio</span>
+                <svg id="devChevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </div>
+            <div id="devPanelBody" class="dev-panel-body">
+                <!-- Status -->
+                <div class="dev-ads-status">
+                    <span class="dev-status-dot" id="adStatusDot"></span>
+                    <span id="adSystemLabel">Anúncios OFF</span>
+                    <span class="dev-next-timer">Próximo: <b id="nextAdTimer">--:--</b></span>
+                </div>
+
+                <!-- Controles -->
+                <div class="dev-ads-controls">
+                    <button id="btnToggleAds" class="dev-ctrl-btn" onclick="toggleAdSystem()">
+                        <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
+                        Ativar Anúncios
+                    </button>
+                    <button class="dev-ctrl-btn dev-ctrl-btn--test" onclick="triggerAdNow()">▶ Testar Agora</button>
+                </div>
+
+                <!-- Intervalo -->
+                <div class="dev-ads-interval">
+                    <label class="admin-label">Intervalo</label>
+                    <select id="adIntervalSelect" class="admin-input" onchange="updateAdInterval()">
+                        <option value="60000">1 minuto</option>
+                        <option value="120000">2 minutos</option>
+                        <option value="180000" selected>3 minutos</option>
+                        <option value="300000">5 minutos</option>
+                        <option value="600000">10 minutos</option>
+                        <option value="1800000">30 minutos</option>
+                    </select>
+                </div>
+
+                <!-- Banner "tocando agora" -->
+                <div id="adPlayingBanner" class="dev-ad-playing hidden">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg>
+                    <span>Tocando: <b id="adPlayingName">—</b></span>
+                    <span>Vol: <b id="adDuckVolLabel">—</b></span>
+                </div>
+
+                <!-- Upload -->
+                <div class="dev-upload-section">
+                    <div id="uploadZone" class="dev-upload-zone">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                        <p>Arraste um .mp3 aqui ou</p>
+                        <label class="dev-upload-btn">
+                            Escolher arquivo
+                            <input type="file" accept="audio/*" style="display:none" onchange="handleAdFileUpload(event)">
+                        </label>
+                    </div>
+                    <div id="uploadProgress" class="dev-upload-progress hidden">
+                        <div id="uploadProgressFill" class="dev-upload-fill"></div>
+                        <span id="uploadProgressLabel">Carregando...</span>
+                    </div>
+                </div>
+
+                <!-- Lista de ads -->
+                <div class="dev-ads-list-header">
+                    <span>Arquivos</span>
+                    <span id="adsCount">0 arquivo(s)</span>
+                </div>
+                <div id="adsList" class="dev-ads-list">
+                    <div id="adsEmpty" class="dev-ads-empty">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+                        <span>Nenhum anúncio salvo. Faça upload de um .mp3.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════
+         Tab: Controle de Alterações / Histórico
+         ═══════════════════════════════════════════ -->
+    <div class="admin-tab-content hidden" data-tab="hist-control" id="histControlTab">
+
+        <!-- Undo / Redo bar -->
+        <div class="hist-undo-bar">
+            <button id="btnUndo" class="hist-undo-btn" onclick="performUndo()" disabled title="Desfazer última ação">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><polyline points="9 14 4 9 9 4"/><path d="M20 20v-7a4 4 0 0 0-4-4H4"/></svg>
+                Desfazer
+            </button>
+            <span id="undoInfo" class="hist-undo-info">Nada para desfazer</span>
+            <button id="btnRedo" class="hist-undo-btn hist-undo-btn--redo" onclick="performRedo()" disabled title="Refazer ação">
+                Refazer
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><polyline points="15 14 20 9 15 4"/><path d="M4 20v-7a4 4 0 0 1 4-4h12"/></svg>
+            </button>
+        </div>
+
+        <!-- Ações de controle -->
+        <div class="hist-section-label">Ações Rápidas</div>
+        <div class="hist-actions-grid">
+            <button class="hist-action-btn hist-action-btn--reset" onclick="resetToDefaults()">
+                <div class="hist-action-icon">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-3.7"/></svg>
+                </div>
+                <div class="hist-action-body">
+                    <div class="hist-action-title">Resetar Padrão</div>
+                    <div class="hist-action-desc">Restaura todos os valores originais do sistema</div>
+                </div>
+            </button>
+            <button class="hist-action-btn hist-action-btn--clear" onclick="clearQueueWithConfirm()">
+                <div class="hist-action-icon">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6m3 0V4a2 2 0 012-2h4a2 2 0 012 2v2"/></svg>
+                </div>
+                <div class="hist-action-body">
+                    <div class="hist-action-title">Limpar Fila</div>
+                    <div class="hist-action-desc">Remove todas as músicas da fila de reprodução</div>
+                </div>
+            </button>
+            <button class="hist-action-btn hist-action-btn--stop" onclick="clearCurrentTrack()">
+                <div class="hist-action-icon">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="2"/></svg>
+                </div>
+                <div class="hist-action-body">
+                    <div class="hist-action-title">Parar Música</div>
+                    <div class="hist-action-desc">Para e remove a música que está tocando agora</div>
+                </div>
+            </button>
+            <button class="hist-action-btn hist-action-btn--text" onclick="clearCustomTexts()">
+                <div class="hist-action-icon">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"/><line x1="15" y1="5" x2="19" y2="9"/></svg>
+                </div>
+                <div class="hist-action-body">
+                    <div class="hist-action-title">Apagar Textos</div>
+                    <div class="hist-action-desc">Reseta nome, slogan e WhatsApp para o padrão</div>
+                </div>
+            </button>
+        </div>
+
+        <!-- Histórico de alterações -->
+        <div class="hist-header-row">
+            <div class="hist-section-label" style="margin-bottom:0">Histórico de Alterações</div>
+            <div class="hist-header-actions">
+                <button class="hist-mini-btn" onclick="exportHistory()" title="Exportar histórico em JSON">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                    Exportar
+                </button>
+                <button class="hist-mini-btn hist-mini-btn--danger" onclick="showConfirmModal('Limpar Histórico', 'Tem certeza que deseja apagar todo o histórico de alterações registradas? Os dados do site não serão afetados.', 'Sim, limpar histórico', clearHistory)" title="Limpar todo o histórico">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6"/></svg>
+                    Limpar
+                </button>
+            </div>
+        </div>
+
+        <div id="historyList" class="hist-list">
+            <div class="hist-empty">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                <span>Nenhuma alteração registrada ainda.</span>
+            </div>
+        </div>
+
+        <!-- Legenda -->
+        <div class="hist-legend">
+            <span class="hist-legend-item"><span class="hist-badge--change">Edição</span> Dados alterados</span>
+            <span class="hist-legend-item"><span class="hist-badge--undo">Desfeito</span> Undo</span>
+            <span class="hist-legend-item"><span class="hist-badge--reset">Reset</span> Padrão restaurado</span>
+            <span class="hist-legend-item"><span class="hist-badge--clear">Limpeza</span> Dados removidos</span>
+        </div>
+    </div>
+
+    <div id="adminToast" class="admin-toast"></div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════
+     ELEMENTOS OCULTOS REQUERIDOS PELO SCRIPT.JS
+     ═══════════════════════════════════════════ -->
+
+<!-- IDs usados pelos scripts mas sem exibição visual dedicada -->
+<div style="display:none" aria-hidden="true">
+    <!-- Duplicatas ocultas para compatibilidade (os IDs reais já existem acima) -->
+</div>
+
+<!-- Toast global -->
+<div id="toast" class="toast hidden"></div>
+
+<!-- Estilo: player centralizado para ouvintes -->
+<style>
+.radio-listener-wrap {
+    display: flex;
+    justify-content: center;
+}
+.radio-listener-wrap .player-card {
+    max-width: 560px;
+    width: 100%;
+}
+</style>
+
+<!-- Scripts -->
+<script src="public.js"></script>
+
+</body>
+</html>
